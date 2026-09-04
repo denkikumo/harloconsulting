@@ -737,14 +737,17 @@ p {
   /* Header */
   .site-header {
     width: 100%;
+    max-width: 100%;
     margin: 0;
     display: block;
     padding: 16px 12px 0;
     border-bottom: 1px solid #ece9ef;
+    overflow: hidden;
   }
 
   .brand {
     width: 100%;
+    max-width: 100%;
     justify-content: flex-start;
     margin-bottom: 12px;
   }
@@ -755,17 +758,20 @@ p {
   }
 
   .site-nav {
-    width: calc(100% + 24px);
-    margin-left: -12px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 2px;
-    padding: 0 12px 10px;
+    padding: 0 0 10px;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   .site-nav::-webkit-scrollbar {
@@ -774,6 +780,7 @@ p {
 
   .site-nav > a {
     flex: 0 0 auto;
+    max-width: 100%;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -1105,10 +1112,11 @@ p {
   }
 
   .site-nav {
-    width: calc(100% + 20px);
-    margin-left: -10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .site-nav > a {
@@ -1170,5 +1178,20 @@ p {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+
+@media (max-width: 620px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .site-header,
+  .site-header * {
+    box-sizing: border-box;
   }
 }
