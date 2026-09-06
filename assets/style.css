@@ -66,8 +66,9 @@ h1 {
   font-size: clamp(3.7rem, 6.2vw, 6.8rem);
   font-weight: 780;
   line-height: 0.9;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
+  word-spacing: 0.6rem;
 }
 
 h1 span {
@@ -78,8 +79,9 @@ h2 {
   font-size: clamp(2.5rem, 4.6vw, 4.9rem);
   font-weight: 770;
   line-height: 0.93;
-  letter-spacing: -0.058em;
+  letter-spacing: -0.040em;
   text-transform: uppercase;
+    word-spacing: 0.4rem;
 }
 
 h3 {
@@ -509,77 +511,76 @@ p {
 }
 
 /* =========================================================
-   WHY HARLO
+   WHY HARLO + CONTACT
 ========================================================= */
+.closing-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  background: #f8f5fb;
+}
 
 .why-section {
+  min-width: 0;
   color: var(--white);
   background:
     radial-gradient(circle at 0% 0%, rgba(152, 92, 239, 0.52), transparent 38%),
     linear-gradient(135deg, #4a02b8 0%, #2a006f 100%);
 }
 
-.why-shell {
+.why-shell,
+.contact-shell {
   min-height: 520px;
-  max-width: 920px;
+  padding: 72px clamp(30px, 4vw, 68px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(82px, 10vw, 128px) 0;
   text-align: center;
 }
 
-.why-shell h2 {
-  max-width: 800px;
+.why-shell h2,
+.contact-copy h2 {
+  font-size: clamp(2.05rem, 3.15vw, 3.55rem);
+  line-height: 0.98;
 }
+
+.why-shell h2 { max-width: 620px; }
+.why-shell h2 span { display: block; }
+.why-shell h2 span + span { margin-top: 0.25em; }
 
 .why-lede {
-  max-width: 650px;
-  margin-top: 27px;
-  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  max-width: 550px;
+  margin-top: 28px;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255,255,255,.86);
 }
-
-/* =========================================================
-   CONTACT
-========================================================= */
 
 .contact-section {
-  background: var(--white);
+  min-width: 0;
+  background:
+    radial-gradient(circle at 0% 50%, rgba(69, 2, 176, 0.055), transparent 42%),
+    linear-gradient(180deg, #fbf9fd 0%, #f7f4fa 100%);
+  border-left: 1px solid rgba(69, 2, 176, 0.08);
 }
-
-.contact-shell {
-  display: flex;
-  justify-content: center;
-}
-
-.contact-copy {
-  width: min(100%, 780px);
-  text-align: center;
-}
-
-.contact-copy h2 {
-  margin-bottom: 26px;
-}
-
+.contact-copy { width: min(100%, 610px); text-align: center; }
+.contact-copy h2 { margin-bottom: 24px; }
 .contact-lede {
   margin-bottom: 12px;
   font-family: "Archivo", sans-serif;
-  font-size: clamp(1.12rem, 1.7vw, 1.46rem);
+  font-size: clamp(1.04rem, 1.3vw, 1.26rem);
   font-weight: 650;
-  line-height: 1.38;
+  line-height: 1.4;
 }
-
 .contact-copy > p:last-of-type {
-  max-width: 700px;
+  max-width: 560px;
   margin: 0 auto;
-  color: var(--muted);
+  color: #66616d;
 }
-
 .contact-cta {
   margin-top: 30px;
+  box-shadow: 0 14px 32px rgba(69, 2, 176, 0.16);
 }
 
 /* =========================================================
@@ -587,14 +588,20 @@ p {
 ========================================================= */
 
 .site-footer {
+  width: 100%;
+  margin: 0;
+  background: #f7f4fa;
+  border-top: 1px solid rgba(69, 2, 176, 0.08);
+}
+
+.footer-shell {
   width: var(--page);
-  min-height: 106px;
+  min-height: 104px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  border-top: 1px solid var(--line);
 }
 
 .footer-brand {
@@ -612,7 +619,7 @@ p {
 
 .site-footer p {
   font-size: 0.75rem;
-  color: #666a70;
+  color: #6b6670;
 }
 
 /* =========================================================
@@ -1084,6 +1091,10 @@ p {
   /* Footer */
   .site-footer {
     min-height: 0;
+  }
+
+  .footer-shell {
+    min-height: 0;
     flex-direction: column;
     align-items: center;
     gap: 11px;
@@ -1187,5 +1198,60 @@ p {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* Closing split responsive refinements */
+@media (max-width: 850px) {
+  .why-shell,
+  .contact-shell {
+    min-height: 470px;
+    padding: 54px 22px;
+  }
+
+  .why-shell h2,
+  .contact-copy h2 {
+    font-size: clamp(1.8rem, 4.5vw, 2.55rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .closing-split { grid-template-columns: 1fr; }
+
+  .why-shell,
+  .contact-shell {
+    min-height: 0;
+    padding: 62px 12px 66px;
+  }
+
+  .why-shell h2,
+  .contact-copy h2 {
+    font-size: clamp(2rem, 8.4vw, 2.55rem);
+    line-height: .98;
+  }
+
+  .why-shell h2 span + span { margin-top: .3em; }
+
+  .why-lede {
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: .98rem;
+    line-height: 1.6;
+  }
+
+  .contact-copy { width: 100%; max-width: none; }
+  .contact-copy h2 { margin-bottom: 16px; }
+  .contact-lede { margin-bottom: 10px; font-size: 1.04rem; line-height: 1.42; }
+  .contact-copy > p:last-of-type { max-width: none; font-size: .94rem; line-height: 1.58; }
+  .contact-cta { width: min(100%, 380px); margin-top: 24px; }
+}
+
+@media (max-width: 620px) {
+  .contact-section {
+    border-left: 0;
+    border-top: 1px solid rgba(69, 2, 176, 0.08);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(69, 2, 176, 0.045), transparent 38%),
+      linear-gradient(180deg, #fbf9fd 0%, #f7f4fa 100%);
   }
 }
